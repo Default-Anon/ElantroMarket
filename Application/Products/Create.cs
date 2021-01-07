@@ -23,7 +23,7 @@ namespace Application.Products
 
             public string Price { get; set; }
 
-            public string Image { get; set; }
+            public List<Image> Images { get; set; }
             public string Category { get; set; }
         }
         public class Handler : IRequestHandler<Command>
@@ -39,11 +39,12 @@ namespace Application.Products
             {
                 var product = new Product
                 {
-                    Id = command.Id,
+                    ProductId = command.Id,
                     Description = command.Description,
                     Category = command.Category,
-                    Image = command.Image,
+                    Images = command.Images,
                     Name = command.Name,
+                    MainImage = command.Images[0].ToString(),
                     Price = command.Price,
                     Title = command.Title
                 };

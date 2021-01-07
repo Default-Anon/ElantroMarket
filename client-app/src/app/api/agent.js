@@ -2,6 +2,11 @@ import axios from 'axios'
 
 axios.defaults.baseURL = "https://localhost:5001/api";
 
+axios.interceptors.request.use(config => {
+    const token = window.localStorage.getItem('jwt');
+    if (token) config.headers.Authorization = `Bearer ${token}`;
+    return config;
+})
 
 const responseBody = (response) => response.data;
 
@@ -16,9 +21,15 @@ const Products = {
     list: () => requests.get('/product'),
     details: (id) => requests.get(`/product/${id}`),
     create: (product) => requests.post('/product', product),
-    update: (id, product) => requests.put(`/product${id}`, product),
+    update: (id, product) => requests.put(`/product/${id}`, product),
     delete: (id) => requests.del(`/product/${id}`)
 }
+const SignInManager = {
+    login: (user) => requests.post('user/login',user),
+    register: (user) => requests.post('user/register', user),
+    currentUser: () => requests.get('user')
+}
 export default {
-    Products
+    Products,
+    SignInManager
 }

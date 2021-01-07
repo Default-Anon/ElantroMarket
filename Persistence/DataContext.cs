@@ -9,14 +9,21 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Persistence
 {
-    public class DataContext : IdentityDbContext
+    public class DataContext : IdentityDbContext<AppUser>
     {
         public DbSet<Product> Products { get; set; }
-        public DataContext(DbContextOptions opt)
-            : base(opt) { }
+        public DbSet<Image> Images { get; set; }
+        public DataContext(DbContextOptions options)
+            : base(options) { }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+            builder.Entity<AppUser>()
+                .Property(user => user.Role).HasDefaultValue("Client");
+            builder.Entity<Image>()
+                .HasOne(p => p.Product)
+                .WithMany(b => b.Images)
+                .HasForeignKey(k => k.ProductId);
         }
     }
 }

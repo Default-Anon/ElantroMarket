@@ -17,16 +17,18 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import Drawer from '@material-ui/core/Drawer'
 import Sidebar from './../sidebar/Sidebar';
-import { Container } from '@material-ui/core';
+import { Container, Tooltip } from '@material-ui/core';
+import { Link } from '@material-ui/core/';
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
   grow: {
-    flexGrow: 1,
+    flexGrow: '1',
   },
   menuButton: {
     marginRight: theme.spacing(2),
   },
   title: {
+    backgroundColor: 'gray',
     display: 'none',
     [theme.breakpoints.up('sm')]: {
       display: 'block',
@@ -78,21 +80,33 @@ const useStyles = makeStyles((theme) => ({
   sectionMobile: {
     display: 'flex',
     [theme.breakpoints.up('md')]: {
-      display: 'none',
+      display: 'none'
     },
   },
+  Toolbar: {
+    backgroundColor: 'gray'
+  }
 }));
 
 export default function NavBar() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const [profileStatus, setProfileStatus] = useState(false);
 
   const [open, setOpen] = useState(false);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
+  const handleProfileClicked = () => {
+    const token = window.localStorage.getItem('jwt');
+    if (token === null) {
+      setProfileStatus(false);
+    } else {
+      setProfileStatus(true);
+    }
+  }
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -121,8 +135,6 @@ export default function NavBar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
     </Menu>
   );
 
@@ -153,15 +165,28 @@ export default function NavBar() {
         </IconButton>
         <p>Notifications</p>
       </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
+      <MenuItem>
+        {profileStatus ?
+          <IconButton
+            href="/account/profile"
+            edge="end"
+            aria-label="account of current user"
+            aria-haspopup="true"
+            color="inherit"
+            onClick={handleProfileClicked}
+          >
+            <AccountCircle />
+          </IconButton> :
+          <IconButton
+            href="/account/login"
+            edge="end"
+            aria-label="account of current user"
+            aria-haspopup="true"
+            color="inherit"
+            onClick={handleProfileClicked}
+          >
+            <AccountCircle />
+          </IconButton>}
         <p>Profile</p>
       </MenuItem>
     </Menu>
@@ -170,11 +195,11 @@ export default function NavBar() {
   return (
     <div className={classes.grow}>
       <AppBar position="absolute" color="inherit" style={{ backgroundColor: 'gray' }}>
-        <Toolbar>
+        <Toolbar className={classes.Toolbar}>
           <Sidebar open={open} />
-          <Typography className={classes.title} variant="h6" noWrap>
+          <Link className={classes.title} variant="h6" color="inherit" noWrap href="http://localhost:3000">
             ElantroMarket
-          </Typography>
+          </Link>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
@@ -203,16 +228,29 @@ export default function NavBar() {
                 <NotificationsIcon />
               </Badge>
             </IconButton>
-            <IconButton
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
+            <Tooltip title={<body style={{ fontSize: '15px' }}>Profile</body>} aria-label="Profile" placement="bottom" >
+              {profileStatus ?
+                <IconButton
+                  href="/account/profile"
+                  edge="end"
+                  aria-label="account of current user"
+                  aria-haspopup="true"
+                  color="inherit"
+                  onClick={handleProfileClicked}
+                >
+                  <AccountCircle />
+                </IconButton> :
+                <IconButton
+                  href="/account/login"
+                  edge="end"
+                  aria-label="account of current user"
+                  aria-haspopup="true"
+                  color="inherit"
+                  onClick={handleProfileClicked}
+                >
+                  <AccountCircle />
+                </IconButton>}
+            </Tooltip>
           </div>
           <div className={classes.sectionMobile}>
             <IconButton
@@ -229,6 +267,7 @@ export default function NavBar() {
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
+
     </div>
   );
 }

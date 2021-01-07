@@ -26,7 +26,7 @@ namespace Application.Products
             }
             public async Task<Unit> Handle(Command command,CancellationToken cancellation)
             {
-                var deleteProduct = await _context.Products.FirstOrDefaultAsync(x => x.Id == command.Id);
+                var deleteProduct = await _context.Products.FirstOrDefaultAsync(x => x.ProductId == command.Id);
                 if(deleteProduct == null)
                 {
                     throw new Exception("Delete: Object id not found");

@@ -8,7 +8,7 @@ namespace Domain
 {
     public class Product
     {
-        public Guid Id { get; set; }
+        public Guid ProductId { get; set; }
         public string Title { get; set; }
 
         public string Name { get; set; }
@@ -17,7 +17,9 @@ namespace Domain
 
         public string Price { get; set; }
 
-        public string Image { get; set; }
         public string Category { get; set; }
+
+        public string MainImage { get; set; }
+        public List<Image> Images { get; set; }
     }
 }

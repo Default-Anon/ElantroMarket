@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Domain;
 
 namespace Application.Products
 {
@@ -23,8 +24,9 @@ namespace Application.Products
 
             public string Price { get; set; }
 
-            public string Image { get; set; }
+            public List<Image> Images { get; set; }
             public string Category { get; set; }
+            public string MainImage { get; set; }
         }
         public class Handler : IRequestHandler<Command>
         {
@@ -36,7 +38,7 @@ namespace Application.Products
             }
             public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
             {
-                var editedProduct = await _context.Products.SingleOrDefaultAsync(x => x.Id == request.Id);
+                var editedProduct = await _context.Products.SingleOrDefaultAsync(x => x.ProductId == request.Id);
                 if(editedProduct == null)
                 {
                     throw new Exception("Edit: Error, Id not found");
@@ -44,7 +46,8 @@ namespace Application.Products
                 editedProduct.Title = request.Title ?? editedProduct.Title;
                 editedProduct.Price = request.Price ?? editedProduct.Price;
                 editedProduct.Name = request.Name ?? editedProduct.Name;
-                editedProduct.Image = request.Image ?? editedProduct.Image;
+                editedProduct.MainImage = request.MainImage ?? editedProduct.MainImage;
+                editedProduct.Images = request.Images ?? editedProduct.Images;
                 editedProduct.Category = request.Category ?? editedProduct.Category;
                 editedProduct.Description = request.Description ?? editedProduct.Description;
                 var result = await _context.SaveChangesAsync() > 0;
