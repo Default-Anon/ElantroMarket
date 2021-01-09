@@ -36,7 +36,6 @@ const useStyles = makeStyles((theme) => ({
     boxImage: {
         display: 'flex',
         justifyContent: 'center',
-        minWidth: '420px',
         [theme.breakpoints.only('lg')]: {
             maxWidth: '700px'
         },
@@ -44,13 +43,8 @@ const useStyles = makeStyles((theme) => ({
     },
     boxName: {
         border: '1px solid black',
-        minWidth: '420px',
-        [theme.breakpoints.only('sm')]: {
-            width: '87vw'
-        },
-        [theme.breakpoints.only('xs')]: {
-            width: '82vw'
-        }
+        justifyContent: 'center',
+        display: 'flex'
     },
     paper: {
     },
@@ -64,24 +58,15 @@ const useStyles = makeStyles((theme) => ({
     InfoUser: {
         display: 'flex',
         minHeight: '200px',
-        minWidth: '420px',
         backgroundColor: '#521b44',
         color: 'pink',
     },
     adminForms: {
-        minWidth: '420px',
         border: '1px solid green',
         marginTop: '10px',
-        [theme.breakpoints.only('sm')]: {
-            width: '87vw'
-        },
-        [theme.breakpoints.only('xs')]: {
-            width: '82vw'
-        }
     },
     adminFormsCreate: {
         border: '2px solid black',
-        minWidth: '420px',
         [theme.breakpoints.only("lg")]: {
             width: '550px'
         },
@@ -95,9 +80,6 @@ const useStyles = makeStyles((theme) => ({
     },
     textAreaDescription: {
         height: '250px',
-        [theme.breakpoints.only('xs')]: {
-            width: '410px'
-        },
         [theme.breakpoints.only('lg')]: {
             width: '540px'
         },
@@ -224,7 +206,7 @@ const Profile = () => {
                             justifyContent="space-between"
                             flexDirection="row" display="flex"
                             flexWrap="wrap" className={classes.adminForms}>
-                            <Box maxWidth="550px">
+                            <Box>
                                 <TextField
                                     variant="outlined"
                                     margin="none"

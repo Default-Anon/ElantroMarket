@@ -17,7 +17,9 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
-import { Menu } from '@material-ui/icons'
+import { Menu, Tv, Smartphone, Laptop, Computer, Tablet, VideoLabel } from '@material-ui/icons'
+import agent from '../../app/api/agent'
+import { NavLink } from 'react-router-dom';
 const drawerWidth = 180;
 
 const useStyles = makeStyles((theme) => ({
@@ -79,6 +81,9 @@ export default function Sidebar(props) {
         setOpen(false);
     };
 
+    const HandleCategoryClicked = (category) => {
+
+    }
     return (
         <Drawer
             variant="permanent"
@@ -108,12 +113,36 @@ export default function Sidebar(props) {
             </div>
             <Divider />
             <List>
-                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                        <ListItemText primary={text} />
+                <NavLink to={{ pathname: '/product/category/TV' }} style={{ color: 'black', textDecoration: "none" }}>
+                    <ListItem button key={'TV'}>
+                        <ListItemIcon><Tv /> </ListItemIcon>
+                        <ListItemText primary={'Телевизоры'} />
                     </ListItem>
-                ))}
+                </NavLink>
+                <NavLink to={{ pathname: '/product/category/Notebooks' }} style={{ color: 'black', textDecoration: "none" }}>
+                    <ListItem button key={'Notebooks'}>
+                        <ListItemIcon><Laptop /> </ListItemIcon>
+                        <ListItemText primary={'Ноутбуки'} />
+                    </ListItem>
+                </NavLink>
+                <NavLink to={{ pathname: '/product/category/Computers' }} style={{ color: 'black', textDecoration: "none" }}>
+                    <ListItem button key={'Computers'}>
+                        <ListItemIcon><VideoLabel /> </ListItemIcon>
+                        <ListItemText primary={'Компьютеры'} />
+                    </ListItem>
+                </NavLink>
+                <NavLink to={{ pathname: '/product/category/Smartphones' }} style={{ color: 'black', textDecoration: "none" }}>
+                    <ListItem button key={'Smartphones'}>
+                        <ListItemIcon><Smartphone /></ListItemIcon>
+                        <ListItemText primary={'Смартфоны'} />
+                    </ListItem>
+                </NavLink>
+                <NavLink to={{ pathname: '/product/category/Tablets' }} style={{ color: 'black', textDecoration: "none" }}>
+                    <ListItem button key={'Tablets'}>
+                        <ListItemIcon><Tablet /> </ListItemIcon>
+                        <ListItemText primary={'Планшеты'} />
+                    </ListItem>
+                </NavLink>
             </List>
             <Divider />
             <List>

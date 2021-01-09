@@ -1,8 +1,8 @@
 import { Grid } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import { Paper, IconButton } from '@material-ui/core'
-import agent from '../../app/api/agent'
-import ProductList from './ProductList';
+import agent from '../../api/agent'
+import ProductList from '../../../features/dashboard/ProductList'
 import Fab from '@material-ui/core/Fab';
 import SortIcon from '@material-ui/icons/Sort';
 import { Tooltip } from '@material-ui/core'
@@ -34,20 +34,19 @@ const useStyles = makeStyles((theme) => ({
         position: 'fixed',
     }
 }))
-export default function ProductDashboard() {
+
+const NotebooksPage = () => {
     const classes = useStyles();
     const [products, setProducts] = useState([]);
     const [open, setOpen] = useState(false);
     const [openImage, setOpenImage] = useState(false);
     const [images, setImages] = useState([]);
     const [photoIndex, setPhotoIndex] = useState(0);
-    const [searchText, setSearchText] = useState("");
+    const [category, setCategory] = useState('Notebooks');
     const onHandleOpenImage = (images) => {
         setImages(images);
         setOpenImage(true);
     }
-
-
     const onHandleOpen = () => {
         setOpen(true);
     }
@@ -56,42 +55,28 @@ export default function ProductDashboard() {
     }
 
     useEffect(() => {
-        if (searchText == "") {
-            agent.Products.list()
-                .then(response => {
-                    let products = [];
-                    response.forEach((product) => {
-                        products.push(product);
-                    })
-                    setProducts(products);
-                })
-        }
-        else {
-            agent.Filters.search('any', searchText)
-                .then(response => {
-                    let products = [];
-                    response.forEach((product) => {
-                        products.push(product);
-                    })
-                    setProducts(products);
-                })
-        }
-        const id = setInterval(() => { setSearchText(document.getElementById('SearchBar1').value) }, 100);
-        return () => clearInterval(id);
-    }, [searchText])
+        agent.Filters.list(category).then((response) => {
+            let productsBackup = [];
+            response.forEach((product) => {
+                productsBackup.push(product);
+            })
+            setProducts(productsBackup);
+        })
+    }, []);
     return (
-        <>{openImage && (
-            <Lightbox mainSrc={images[photoIndex].imageUrl}
-                nextSrc={images[(photoIndex + 1) % images.length].imageUrl}
-                prevSrc={images[(photoIndex + images.length - 1) % images.length].imageUrl}
-                onMovePrevRequest={() =>
-                    setPhotoIndex((photoIndex + images.length - 1) % images.length)
-                }
-                onMoveNextRequest={() =>
-                    setPhotoIndex((photoIndex + 1) % images.length)
-                }
-                onCloseRequest={() => { setOpenImage(false); setPhotoIndex(0) }} />
-        )}
+        <>
+            {openImage && (
+                <Lightbox mainSrc={images[photoIndex].imageUrl}
+                    nextSrc={images[(photoIndex + 1) % images.length].imageUrl}
+                    prevSrc={images[(photoIndex + images.length - 1) % images.length].imageUrl}
+                    onMovePrevRequest={() =>
+                        setPhotoIndex((photoIndex + images.length - 1) % images.length)
+                    }
+                    onMoveNextRequest={() =>
+                        setPhotoIndex((photoIndex + 1) % images.length)
+                    }
+                    onCloseRequest={() => { setOpenImage(false); setPhotoIndex(0) }} />
+            )}
             <Grid container className={classes.root} spacing={2}>
                 <ProductList products={products} openImage={(image) => { onHandleOpenImage(image) }} />
                 <div className={classes.sortedSidebarBtn}>
@@ -135,3 +120,5 @@ export default function ProductDashboard() {
         </>
     );
 }
+
+export default NotebooksPage;

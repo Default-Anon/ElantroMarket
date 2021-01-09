@@ -18,11 +18,11 @@ import { Edit, Delete, Share } from '@material-ui/icons';
 import ProductEdit from '../product/ProductEdit';
 import { NavLink } from 'react-router-dom';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
     root: {
 
-    },
-});
+    }
+}));
 
 export default function ProductList(props) {
     const classes = useStyles();
@@ -47,36 +47,39 @@ export default function ProductList(props) {
             {
                 props.products.map((product) => {
                     return (
-                        <Grid item lg={4} md={6} sm={6} xs={12}>
-                            <Card className={classes.root} key={product.id}>
-                                <CardActionArea onClick={() => { product.mainImage === null ? props.openImage(defaultImage) : props.openImage(product.images) }}>
-                                    <Tooltip title={<h3>На весь экран</h3>} arrow placement="right">
-                                        <CardMedia
-                                            component="img"
-                                            height="270px"
-                                            alt={product.name}
-                                            image={product.mainImage === 'null' ? defaultImage : product.mainImage}
-                                            title={product.name}
-                                        />
-                                    </Tooltip>
-                                </CardActionArea>
+                        <Grid item lg={4} md={6} sm={6} xs={12} key={product.Id}>
+                            <Card className={classes.root}>
+                                <Grid item>
+                                    <CardActionArea onClick={() => { product.mainImage === null ? props.openImage(defaultImage) : props.openImage(product.images) }}>
+                                        <Tooltip title={<h3>На весь экран</h3>} enterTouchDelay="200" arrow placement="right">
+                                            <CardMedia
+                                                component="img"
+                                                height="270px"
+                                                alt={product.name}
+                                                image={product.mainImage === 'null' ? defaultImage : product.mainImage}
+                                            />
+                                        </Tooltip>
+                                    </CardActionArea>
+                                </Grid>
                                 <CardActionArea>
-                                    <Tooltip title={<h3>Смотреть полностью</h3>} arrow>
-                                        <CardContent style={{ backgroundColor: '#5b2b6b', color: 'pink' }}>
-                                            <Grid container spacing={3} direction="row" justify="space-between">
-                                                <Grid item >
-                                                    <Typography gutterBottom variant="h5" component="h2">
-                                                        {product.name}
-                                                    </Typography>
+                                    <Grid item>
+                                        <Tooltip title={<h3>Смотреть полностью</h3>} enterTouchDelay="200" arrow>
+                                            <CardContent style={{ backgroundColor: '#5b2b6b', color: 'pink' }}>
+                                                <Grid container spacing={3} direction="column" >
+                                                    <Grid item >
+                                                        <Typography gutterBottom variant="h6" component="h2">
+                                                            {product.title}
+                                                        </Typography>
+                                                    </Grid>
+                                                    <Grid item >
+                                                        <Typography variant="button" color="inherit" style={{ fontSize: '15px', marginLeft: 'auto' }}>
+                                                            {product.price + ' рублей'}
+                                                        </Typography>
+                                                    </Grid>
                                                 </Grid>
-                                                <Grid item >
-                                                    <Typography variant="button" color="inherit" style={{ fontSize: '15px', marginLeft: 'auto' }}>
-                                                        {product.price + ' рублей'}
-                                                    </Typography>
-                                                </Grid>
-                                            </Grid>
-                                        </CardContent>
-                                    </Tooltip>
+                                            </CardContent>
+                                        </Tooltip>
+                                    </Grid>
                                 </CardActionArea>
                                 {user.role === 'admin' &&
                                     <CardActions style={{ backgroundColor: 'gray' }}>

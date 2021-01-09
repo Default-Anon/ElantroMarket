@@ -29,7 +29,12 @@ const SignInManager = {
     register: (user) => requests.post('user/register', user),
     currentUser: () => requests.get('user')
 }
+const Filters = {
+    list: (category) => requests.get(`/filter/${category}`),
+    search: (category, searchText) => requests.get(`/filter/${category}/${searchText}`)
+};
 export default {
     Products,
-    SignInManager
+    SignInManager,
+    Filters
 }

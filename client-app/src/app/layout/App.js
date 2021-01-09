@@ -7,18 +7,30 @@ import SignIn from '../../features/user/SignIn'
 import SignUp from './../../features/user/SignUp';
 import Profile from '../../features/user/Profile';
 import ProductEdit from './../../features/product/ProductEdit';
+import ProductCategoryes from './../../features/product/ProductCategoryes';
+import TVPage from './../pages/category/TVPage';
+import TabletPage from '../pages/category/TabletPage';
+import ComputersPage from './../pages/category/ComputersPage';
+import SmartphonesPage from './../pages/category/SmartphonesPage';
+import NotebooksPage from './../pages/category/NotebooksPage';
 function App() {
   return (
     <>
-      <NavBar />
       <BrowserRouter>
+        <NavBar />
         <Switch>
         <Route exact path='/' component={ProductDashboard} />
         <Route exact path='/account/login' component={SignIn} />
         <Route exact path='/account/register' component={SignUp} />
         <Route exact path='/account/profile' component={Profile} />
-        <Route exact path="/product/edit" component={ProductEdit}/>
-      </Switch>
+        <Route exact path="/product/edit" component={ProductEdit} />
+        <Route exact path="/product/category" component={ProductCategoryes}/>
+        <Route exact path="/product/category/TV" component={TVPage} />
+        <Route exact path="/product/category/Tablets" component={TabletPage} />
+        <Route exact path="/product/category/Computers" component={ComputersPage} />
+        <Route exact path="/product/category/Smartphones" component={SmartphonesPage} />
+        <Route exact path="/product/category/Notebooks" component={NotebooksPage} />
+        </Switch>
       </BrowserRouter>
     </>
   );

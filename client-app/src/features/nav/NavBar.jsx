@@ -19,6 +19,8 @@ import Drawer from '@material-ui/core/Drawer'
 import Sidebar from './../sidebar/Sidebar';
 import { Container, Tooltip } from '@material-ui/core';
 import { Link } from '@material-ui/core/';
+import { ShoppingBasket } from '@material-ui/icons';
+import { NavLink } from 'react-router-dom';
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -150,22 +152,14 @@ export default function NavBar() {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <IconButton aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="secondary">
-            <MailIcon />
+        <IconButton color="inherit">
+          <Badge badgeContent={0} color="primary">
+            <ShoppingBasket />
           </Badge>
         </IconButton>
-        <p>Messages</p>
+        <p>Basket</p>
       </MenuItem>
-      <MenuItem>
-        <IconButton aria-label="show 11 new notifications" color="inherit">
-          <Badge badgeContent={11} color="secondary">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
-      <MenuItem>
+      <MenuItem on>
         {profileStatus ?
           <IconButton
             href="/account/profile"
@@ -206,26 +200,21 @@ export default function NavBar() {
             </div>
             <Container>
               <InputBase
-                placeholder="Search…"
+                id="SearchBar1"
+                placeholder="Input Product Name"
                 classes={{
                   root: classes.inputRoot,
                   input: classes.inputInput,
                 }}
                 inputProps={{ 'aria-label': 'search' }}
-
               />
             </Container>
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
+            <IconButton color="inherit">
+              <Badge badgeContent={0} color="primary">
+                <ShoppingBasket />
               </Badge>
             </IconButton>
             <Tooltip title={<body style={{ fontSize: '15px' }}>Profile</body>} aria-label="Profile" placement="bottom" >
