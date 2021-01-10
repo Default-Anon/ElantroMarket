@@ -14,7 +14,7 @@ import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css'
 import agent from '../../app/api/agent'
 import { IconButton } from '@material-ui/core';
-import { Edit, Delete, Share } from '@material-ui/icons';
+import { Edit, Delete, Share, ShoppingCart } from '@material-ui/icons';
 import ProductEdit from '../product/ProductEdit';
 import { NavLink } from 'react-router-dom';
 
@@ -46,8 +46,9 @@ export default function ProductList(props) {
         <>
             {
                 props.products.map((product) => {
+                    console.log(product);
                     return (
-                        <Grid item lg={4} md={6} sm={6} xs={12} key={product.Id}>
+                        <Grid item lg={4} md={6} sm={6} xs={12} key={product.productId}>
                             <Card className={classes.root}>
                                 <Grid item>
                                     <CardActionArea onClick={() => { product.mainImage === null ? props.openImage(defaultImage) : props.openImage(product.images) }}>
@@ -61,27 +62,29 @@ export default function ProductList(props) {
                                         </Tooltip>
                                     </CardActionArea>
                                 </Grid>
-                                <CardActionArea>
-                                    <Grid item>
-                                        <Tooltip title={<h3>Смотреть полностью</h3>} enterTouchDelay="200" arrow>
-                                            <CardContent style={{ backgroundColor: '#5b2b6b', color: 'pink' }}>
-                                                <Grid container spacing={3} direction="column" >
-                                                    <Grid item >
-                                                        <Typography gutterBottom variant="h6" component="h2">
-                                                            {product.title}
-                                                        </Typography>
+                                <NavLink to={{ pathname: `/product/id/${product.productId}` }} style={{ textDecoration: 'none' }}>
+                                    <CardActionArea>
+                                        <Grid item>
+                                            <Tooltip title={<h3>Смотреть полностью</h3>} enterTouchDelay="200" arrow>
+                                                <CardContent style={{ backgroundColor: '#5b2b6b', color: 'pink' }}>
+                                                    <Grid container spacing={3} direction="column" >
+                                                        <Grid item >
+                                                            <Typography gutterBottom variant="h6" component="h2">
+                                                                {product.title}
+                                                            </Typography>
+                                                        </Grid>
+                                                        <Grid item >
+                                                            <Typography variant="button" color="inherit" style={{ fontSize: '15px', marginLeft: 'auto' }}>
+                                                                {product.price + ' рублей'}
+                                                            </Typography>
+                                                        </Grid>
                                                     </Grid>
-                                                    <Grid item >
-                                                        <Typography variant="button" color="inherit" style={{ fontSize: '15px', marginLeft: 'auto' }}>
-                                                            {product.price + ' рублей'}
-                                                        </Typography>
-                                                    </Grid>
-                                                </Grid>
-                                            </CardContent>
-                                        </Tooltip>
-                                    </Grid>
-                                </CardActionArea>
-                                {user.role === 'admin' &&
+                                                </CardContent>
+                                            </Tooltip>
+                                        </Grid>
+                                    </CardActionArea>
+                                </NavLink>
+                                {user.role === 'admin' ?
                                     <CardActions style={{ backgroundColor: 'gray' }}>
                                         <IconButton size="small" color="primary" onClick={() => ShareButtonClicked(product.productId)}>
                                             <Share />
@@ -97,6 +100,17 @@ export default function ProductList(props) {
                                                 <Edit />
                                             </IconButton>
                                         </NavLink>
+                                    </CardActions>
+                                    :
+                                    <CardActions style={{ backgroundColor: 'gray' }}>
+                                        <IconButton size="small" color="primary" onClick={() => ShareButtonClicked(product.productId)}>
+                                            <Share />
+                                        </IconButton>
+                                        <IconButton
+                                            size="small" color="inherit"
+                                            style={{ color: 'black', marginLeft: 'auto' }}>
+                                            <ShoppingCart />
+                                        </IconButton>
                                     </CardActions>
                                 }
                             </Card>

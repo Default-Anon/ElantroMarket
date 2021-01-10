@@ -23,7 +23,7 @@ namespace API.Controllers
             return await Mediator.Send(new List.Query());
        }
        [HttpGet("{id}")]
-       [Authorize]
+       [AllowAnonymous]
        public async Task<ActionResult<Product>> Details(Guid id)
        {
             return await Mediator.Send(new Details.Query { Id = id });

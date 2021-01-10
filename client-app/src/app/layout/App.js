@@ -13,11 +13,12 @@ import TabletPage from '../pages/category/TabletPage';
 import ComputersPage from './../pages/category/ComputersPage';
 import SmartphonesPage from './../pages/category/SmartphonesPage';
 import NotebooksPage from './../pages/category/NotebooksPage';
+import ProductPage from './../pages/product/ProductPage';
 function App() {
   return (
     <>
       <BrowserRouter>
-        <NavBar />
+        <NavBar/>
         <Switch>
         <Route exact path='/' component={ProductDashboard} />
         <Route exact path='/account/login' component={SignIn} />
@@ -30,6 +31,7 @@ function App() {
         <Route exact path="/product/category/Computers" component={ComputersPage} />
         <Route exact path="/product/category/Smartphones" component={SmartphonesPage} />
         <Route exact path="/product/category/Notebooks" component={NotebooksPage} />
+        <Route exact path="/product/id/:id" component={ProductPage} />
         </Switch>
       </BrowserRouter>
     </>

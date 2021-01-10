@@ -1,5 +1,6 @@
 ﻿using Domain;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Persistence;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,7 @@ namespace Application.Products
             }
             public async Task<Product> Handle(Query query,CancellationToken cancellationToken)
             {
-                var product = await _context.Products.FindAsync(query.Id);
+                var product = await _context.Products.Where(x => x.ProductId == query.Id).Include(collection => collection.Images).SingleAsync();
                 if(product == null)
                 {
                     throw new Exception("Id not found");

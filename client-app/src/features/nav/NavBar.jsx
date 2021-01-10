@@ -19,7 +19,7 @@ import Drawer from '@material-ui/core/Drawer'
 import Sidebar from './../sidebar/Sidebar';
 import { Container, Tooltip } from '@material-ui/core';
 import { Link } from '@material-ui/core/';
-import { ShoppingBasket } from '@material-ui/icons';
+import { ShoppingBasket, ShoppingCart } from '@material-ui/icons';
 import { NavLink } from 'react-router-dom';
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
@@ -154,7 +154,7 @@ export default function NavBar() {
       <MenuItem>
         <IconButton color="inherit">
           <Badge badgeContent={0} color="primary">
-            <ShoppingBasket />
+            <ShoppingCart />
           </Badge>
         </IconButton>
         <p>Basket</p>
@@ -214,7 +214,7 @@ export default function NavBar() {
           <div className={classes.sectionDesktop}>
             <IconButton color="inherit">
               <Badge badgeContent={0} color="primary">
-                <ShoppingBasket />
+                <ShoppingCart />
               </Badge>
             </IconButton>
             <Tooltip title={<body style={{ fontSize: '15px' }}>Profile</body>} aria-label="Profile" placement="bottom" >

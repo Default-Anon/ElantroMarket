@@ -35,11 +35,11 @@ namespace Application.Filter
                     {
                         return list;
                     }
-                    throw new Exception("searchText or Category not found");
+                    throw new Exception("searchText not found");
                 }
                 searchParameters.SearchText = searchParameters.SearchText.ToLower();
                 var lstCategory = await _context.Products.Where(x => x.Category == searchParameters.Category)
-                    .Where(x => x.Title.ToLower().Contains(searchParameters.SearchText.ToLower())).Include(x => x.Images).ToListAsync();
+                    ?.Where(x => x.Title.ToLower().Contains(searchParameters.SearchText.ToLower()))?.Include(x => x.Images).ToListAsync();
                 if(lstCategory != null)
                 {
                     return lstCategory;
