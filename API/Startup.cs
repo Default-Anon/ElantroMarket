@@ -52,7 +52,6 @@ namespace API
                  });
             });
             services.AddMediatR(typeof(List.Handler).Assembly);
-            services.AddAutoMapper(typeof(List.Handler));
             services.AddControllers()
                 .AddNewtonsoftJson(opt =>
                 {
