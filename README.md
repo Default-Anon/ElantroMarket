@@ -1,6 +1,6 @@
 # Elantro Market
 ### `Backend`
-- ASP .Net Core 5.0 WebApi
+- ASP .Net Core WebApi
 - EntityFramework Core 
 - CQRS + <a href="https://github.com/jbogard/MediatR">MediatR</a>
 - Using JWT Token
