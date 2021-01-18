@@ -37,7 +37,7 @@ export default function ProductList(props) {
         }
     })
     const ShareButtonClicked = (id) => {
-        navigator.clipboard.writeText(`http://localhost:3000/${id}`);
+        navigator.clipboard.writeText(`http://localhost:3000/product/id/${id}`);
     }
     const DeleteButtonHandler = (id) => {
         agent.Products.delete(id);

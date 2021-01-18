@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles, theme } from '@material-ui/core/styles';
-import { Box, Container, Typography } from '@material-ui/core';
+import { Box, Container, Typography, TextareaAutosize, InputLabel, IconButton } from '@material-ui/core';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 import agent from '../../api/agent';
 import { Button } from '@material-ui/core';
-import { Favorite, Payment, ShoppingCart } from '@material-ui/icons';
+import { Favorite, FormatListNumberedRtlOutlined, Label, Payment, Send, ShoppingCart } from '@material-ui/icons';
+import guid from 'guid'
 const useStyles = makeStyles((theme) => ({
     root: {
         marginTop: '65px',
@@ -31,19 +32,18 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.up("sm")]: {
             fontSize: '30px'
         },
-        maxWidth: '900px',
+        maxWidth: '700px',
         justifyContent: 'center',
         display: 'flex',
         paddingTop: '10px'
     },
     Img: {
         [theme.breakpoints.only('xs')]: {
-            height: '300px',
+            height: '300px'
         },
         [theme.breakpoints.up('sm')]: {
-            height: '400px',
-            maxWidth: '900px'
-        },
+            height: '500px'
+        }
     },
     Description: {
         display: 'flex',
@@ -61,6 +61,7 @@ const useStyles = makeStyles((theme) => ({
         textAlign: 'center'
     }
 }));
+let hubConnection = null;
 
 const ProductPage = (props) => {
     const classes = useStyles();
@@ -83,9 +84,9 @@ const ProductPage = (props) => {
                             {product.images === null || typeof (product.images) === 'undefined' ?
                                 <p>Images not found</p>
                                 :
-                                product.images.map((image) => {
+                                product.images.map((image, key) => {
                                     return (
-                                        <div>
+                                        <div key={key}>
                                             <img src={image.imageUrl} className={classes.Img} />
                                             <p className="legend" style={{ color: 'yellow' }}>{product.name}</p>
                                         </div>
@@ -108,12 +109,20 @@ const ProductPage = (props) => {
                         В корзину
                     </Button>
                 </Box>
-                <Typography vaeriant="h2" color="primary" className={classes.title}>
+                <Typography variant="h2" color="primary" className={classes.title}>
                     О Товаре
                 </Typography>
                 <Typography className={classes.Description} color="inherit">
                     {product.description}
                 </Typography>
+                <Typography variant="h2" color="primary" className={classes.title}>
+                    Отзывы
+                </Typography>
+                <Box display="flex" justifyContent="center" flexDirection="column" maxWidth="30wh" style={{ marginTop: '30px' }}>
+                    <Box display="flex" justifyContent="space-between" flexDirection="row">
+                        <InputLabel variant="outlined">Написать отзыв</InputLabel>
+                    </Box>
+                </Box>
             </Container>
         </div >
     );

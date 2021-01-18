@@ -28,7 +28,8 @@ namespace Persistence
                         },
                         Name = "SONY Computer",
                         Price = "50000",
-                        Title = "Sony computer high level class"
+                        Title = "Sony computer high level class",
+                        MainImage = "https://static.eldorado.ru/photos/71/715/685/98/new_71568598_l_1604737760.jpeg"
                     },
                     new Product
                     {
@@ -41,7 +42,8 @@ namespace Persistence
                         },
                         Name = "Nokia 1.3",
                         Price = "28500",
-                        Title = "Смартфон Nokia 1.3"
+                        Title = "Смартфон Nokia 1.3",
+                        MainImage = "https://static.eldorado.ru/photos/71/715/685/98/new_71568598_l_1604737760.jpeg"
                     },
                     new Product
                     {
@@ -54,7 +56,8 @@ namespace Persistence
                         },
                         Name = "LG 104-32 Model B",
                         Price = "25000",
-                        Title = "Xiaomi Redmi 4x"
+                        Title = "Xiaomi Redmi 4x",
+                        MainImage = "https://static.eldorado.ru/photos/71/715/685/98/new_71568598_l_1604737760.jpeg"
                     },
                     new Product
                     {
@@ -67,7 +70,8 @@ namespace Persistence
                         },
                         Name = "LG VC5316BNSAF",
                         Price = "5199",
-                        Title = "Пылесос LG VC5316BNSAF"
+                        Title = "Пылесос LG VC5316BNSAF",
+                        MainImage = "https://static.eldorado.ru/photos/71/715/685/98/new_71568598_l_1604737760.jpeg"
                     },
                     new Product
                     {
@@ -85,7 +89,8 @@ namespace Persistence
                         },
                         Name = "Nokia 8.3",
                         Price = "43000",
-                        Title = "Смартфон Nokia 8.3 128GB Blue (TA-1243)"
+                        Title = "Смартфон Nokia 8.3 128GB Blue (TA-1243)",
+                        MainImage = "https://static.eldorado.ru/photos/71/715/685/98/new_71568598_l_1604737760.jpeg"
                     },
                     new Product
                     {
@@ -98,11 +103,12 @@ namespace Persistence
                             new Image {ImageId = Guid.NewGuid(),imageUrl = "https://static.eldorado.ru/photos/71/715/723/13/new_71572313_l_1605697031.jpeg"},
                             new Image {ImageId = Guid.NewGuid(),imageUrl = "https://static.eldorado.ru/photos/71/715/723/13/new_71572313_l_1605697285.jpeg"},
                             new Image {ImageId = Guid.NewGuid(),imageUrl = "https://static.eldorado.ru/photos/71/715/723/13/new_71572313_l_1605697031.jpeg"},
-                            new Image {ImageId = Guid.NewGuid(),imageUrl = "https://static.eldorado.ru/photos/71/715/723/13/new_71572313_l_1605697285.jpeg"}
+                            new Image {ImageId = Guid.NewGuid(),imageUrl = "https://static.eldorado.ru/photos/71/715/723/13/new_71572313_l_1605697285.jpeg"},
                         },
                         Name = "Acer Swift 1 SF114-33-P06A",
                         Price = "33999",
-                        Title = "Ультрабук Acer Swift 1 SF114-33-P06A"
+                        Title = "Ультрабук Acer Swift 1 SF114-33-P06A",
+                        MainImage = "https://static.eldorado.ru/photos/71/715/723/13/new_71572313_l_1605697031.jpeg"
                     },
                     new Product
                     {
@@ -117,7 +123,8 @@ namespace Persistence
                         },
                         Name = "Xiaomi Redmi Note 9 Pro",
                         Price = "20000",
-                        Title = "Смартфон Xiaomi Redmi Note 9 Pro 128GB Grey"
+                        Title = "Смартфон Xiaomi Redmi Note 9 Pro 128GB Grey",
+                        MainImage = "https://static.eldorado.ru/photos/71/715/496/14/new_71549614_l_1590668442.jpeg",
                     },
                     new Product
                     {
