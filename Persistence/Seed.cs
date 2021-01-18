@@ -23,13 +23,13 @@ namespace Persistence
                         Description = "i7 7700k Techno",
                         Category = "Компьютеры",
                         Images = new List<Image>{
-                            new Image {ImageId = Guid.NewGuid(),imageUrl = "https://static.eldorado.ru/photos/71/715/685/98/new_71568598_l_1604737760.jpeg"},
+                            new Image {ImageId = Guid.NewGuid(),imageUrl = "https://images.ru.prom.st/562280743_w440_h440_smartfon-nokia-3.jpg"},
                             new Image {ImageId = Guid.NewGuid(),imageUrl = "https://static.eldorado.ru/photos/71/715/685/98/new_71568598_l_1604737797.jpeg"}
                         },
                         Name = "SONY Computer",
                         Price = "50000",
                         Title = "Sony computer high level class",
-                        MainImage = "https://static.eldorado.ru/photos/71/715/685/98/new_71568598_l_1604737760.jpeg"
+                        MainImage = "https://images.ru.prom.st/562280743_w440_h440_smartfon-nokia-3.jpg"
                     },
                     new Product
                     {
@@ -43,7 +43,7 @@ namespace Persistence
                         Name = "Nokia 1.3",
                         Price = "28500",
                         Title = "Смартфон Nokia 1.3",
-                        MainImage = "https://static.eldorado.ru/photos/71/715/685/98/new_71568598_l_1604737760.jpeg"
+                        MainImage = "https://images.ru.prom.st/562280743_w440_h440_smartfon-nokia-3.jpg"
                     },
                     new Product
                     {
@@ -57,7 +57,7 @@ namespace Persistence
                         Name = "LG 104-32 Model B",
                         Price = "25000",
                         Title = "Xiaomi Redmi 4x",
-                        MainImage = "https://static.eldorado.ru/photos/71/715/685/98/new_71568598_l_1604737760.jpeg"
+                        MainImage = "https://images.ru.prom.st/562280743_w440_h440_smartfon-nokia-3.jpg"
                     },
                     new Product
                     {
@@ -71,7 +71,7 @@ namespace Persistence
                         Name = "LG VC5316BNSAF",
                         Price = "5199",
                         Title = "Пылесос LG VC5316BNSAF",
-                        MainImage = "https://static.eldorado.ru/photos/71/715/685/98/new_71568598_l_1604737760.jpeg"
+                        MainImage = "https://images.ru.prom.st/562280743_w440_h440_smartfon-nokia-3.jpg"
                     },
                     new Product
                     {
@@ -89,8 +89,8 @@ namespace Persistence
                         },
                         Name = "Nokia 8.3",
                         Price = "43000",
-                        Title = "Смартфон Nokia 8.3 128GB Blue (TA-1243)",
-                        MainImage = "https://static.eldorado.ru/photos/71/715/685/98/new_71568598_l_1604737760.jpeg"
+                        Title = "Смартфон Nokia 8.3",
+                        MainImage = "https://images.ru.prom.st/562280743_w440_h440_smartfon-nokia-3.jpg"
                     },
                     new Product
                     {
@@ -108,7 +108,7 @@ namespace Persistence
                         Name = "Acer Swift 1 SF114-33-P06A",
                         Price = "33999",
                         Title = "Ультрабук Acer Swift 1 SF114-33-P06A",
-                        MainImage = "https://static.eldorado.ru/photos/71/715/723/13/new_71572313_l_1605697031.jpeg"
+                        MainImage = "https://images.ru.prom.st/562280743_w440_h440_smartfon-nokia-3.jpg"
                     },
                     new Product
                     {
@@ -118,13 +118,13 @@ namespace Persistence
                         "С легкостью делать селфи, в том числе с эффектом слоу-мо, помогает 16-мегапиксельная фронтальная камера, при работе которой применяются алгоритмы искусственного интеллекта.Высокое быстродействие смартфона Redmi Note 9 Pro 128GB Grey обеспечивает производительный восьмиядерный процессор Qualcomm Snapdragon 720G и оперативная память на 6 ГБ. Внутренний накопитель располагает емкостью 128 ГБ. К нему можно добавить microSD карту вместимостью до 512 ГБ.Смартфон Redmi Note 9 Pro 128GB Grey отличается безупречным симметричным дизайном как задней стороны, так и 6,67-дюймового дисплея. Аккумулятор на 5020 мА*ч позволяет непрерывно слушать музыку на протяжении более чем 6 суток, до 33 часов общаться по голосовой связи или до 16 часов пользоваться гаджетом как навигатором.",
                         Category = "Смартфоны",
                         Images = new List<Image>{
-                            new Image {ImageId = Guid.NewGuid(),imageUrl = "https://static.eldorado.ru/photos/71/715/496/14/new_71549614_l_1590668442.jpeg"},
-                            new Image {ImageId = Guid.NewGuid(),imageUrl = "https://static.eldorado.ru/photos/71/715/496/14/new_71549614_l_1590668561.jpeg"}
+                            new Image {ImageId = Guid.NewGuid(),imageUrl = "https://images.ru.prom.st/562280743_w440_h440_smartfon-nokia-3.jpg"},
+                            new Image {ImageId = Guid.NewGuid(),imageUrl = "https://images.ru.prom.st/562280743_w440_h440_smartfon-nokia-3.jpg"}
                         },
                         Name = "Xiaomi Redmi Note 9 Pro",
                         Price = "20000",
-                        Title = "Смартфон Xiaomi Redmi Note 9 Pro 128GB Grey",
-                        MainImage = "https://static.eldorado.ru/photos/71/715/496/14/new_71549614_l_1590668442.jpeg",
+                        Title = "Смартфон Xiaomi Redmi Note 9 Pro",
+                        MainImage = "https://images.ru.prom.st/562280743_w440_h440_smartfon-nokia-3.jpg",
                     },
                     new Product
                     {
@@ -144,14 +144,14 @@ namespace Persistence
                         " чтобы выводить с них мультимедийный контент на большой яркий экран.",
                         Category = "Телевизоры",
                         Images = new List<Image>{
-                            new Image {ImageId = Guid.NewGuid(),imageUrl = "https://static.eldorado.ru/photos/71/715/110/97/new_71511097_l_1553592355.jpeg"},
-                            new Image {ImageId = Guid.NewGuid(),imageUrl = "https://static.eldorado.ru/photos/71/715/110/97/new_71511097_l_1555491169.jpeg"},
-                            new Image {ImageId = Guid.NewGuid(),imageUrl = "https://static.eldorado.ru/photos/71/715/110/97/new_71511097_l_1555491292.jpeg"},
+                            new Image {ImageId = Guid.NewGuid(),imageUrl = "https://images.ru.prom.st/562280743_w440_h440_smartfon-nokia-3.jpg"},
+                            new Image {ImageId = Guid.NewGuid(),imageUrl = "https://images.ru.prom.st/562280743_w440_h440_smartfon-nokia-3.jpg"},
+                            new Image {ImageId = Guid.NewGuid(),imageUrl = "https://images.ru.prom.st/562280743_w440_h440_smartfon-nokia-3.jpg"},
                             new Image {ImageId = Guid.NewGuid(),imageUrl = "https://static.eldorado.ru/photos/71/715/110/97/new_71511097_l_1564664868.jpeg"},
-                            new Image {ImageId = Guid.NewGuid(),imageUrl = "https://static.eldorado.ru/photos/71/715/110/97/new_71511097_l_1564664875.jpeg"},
-                            new Image {ImageId = Guid.NewGuid(),imageUrl = "https://static.eldorado.ru/photos/71/715/110/97/new_71511097_l_1564664909.jpeg"},
+                            new Image {ImageId = Guid.NewGuid(),imageUrl = "https://images.ru.prom.st/562280743_w440_h440_smartfon-nokia-3.jpg"},
+                            new Image {ImageId = Guid.NewGuid(),imageUrl = "https://images.ru.prom.st/562280743_w440_h440_smartfon-nokia-3.jpg"},
                         },
-                        MainImage = "https://static.eldorado.ru/photos/71/715/110/97/new_71511097_l_1553592355.jpeg",
+                        MainImage = "https://images.ru.prom.st/562280743_w440_h440_smartfon-nokia-3.jpg",
                         Name = "Hi 32HT101X",
                         Price = "30000",
                         Title = "LED телевизор 31.5 Hi 32HT101X"

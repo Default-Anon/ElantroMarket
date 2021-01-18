@@ -95,7 +95,7 @@ const ProductPage = (props) => {
                         </Carousel>
                     </div>
                 </Box>
-                <Typography vaeriant="h2" color="primary" className={classes.title}>
+                <Typography variant="h2" color="primary" className={classes.title}>
                     Цена: {product.price + ' рублей'}
                 </Typography>
                 <Box display="flex" justifyContent="space-between" paddingTop="10px">
