@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAhtyx3cFW6Ei6TY3hp/QrYQAAAAACAAAAAAAQZgAAAAEAACAAAAArZU5FSc0UpS9snhLjFm1F2C2e9YjcGIutSgM0zvyFiwAAAAAOgAAAAAIAACAAAAB6+teUmZX+lWxRkVBi8B4EVJj7J9TT2vxpIHan2MFi8iAAAAAyA96B8TYgaTGU+PTcdwNsI1In/R0fuWoVWZB/ez10bUAAAACSe5yDkNvTnzhbud3V1V0r/3kZdiRCV+bfWihD7te8256XcRyYd21mlnp8SRc3SL23OhV85ljuWvl3foCILios</EncryptedPassword>
+    <_PublishTargetUrl>https://dendfox-001-site1.dtempurl.com:8172/MsDeploy.axd?site=dendfox-001-site1/dendfox-001-site1</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Data Source=SQL5069.site4now.net%3bInitial Catalog=DB_A6E05A_DendFox%3bUser Id=DB_A6E05A_DendFox_admin%3bPassword=She11c%2ade%3b</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>

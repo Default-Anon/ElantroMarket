@@ -13,6 +13,8 @@ namespace Persistence
     {
         public DbSet<Product> Products { get; set; }
         public DbSet<Image> Images { get; set; }
+
+        public DbSet<Comment> Comments { get; set; }
         public DataContext(DbContextOptions options)
             : base(options) { }
         protected override void OnModelCreating(ModelBuilder builder)
@@ -24,6 +26,10 @@ namespace Persistence
                 .HasOne(p => p.Product)
                 .WithMany(b => b.Images)
                 .HasForeignKey(k => k.ProductId);
+            builder.Entity<Comment>()
+                .HasOne(p => p.Product)
+                .WithMany(c => c.Comments)
+                .HasForeignKey(p => p.ProductId);
         }
     }
 }

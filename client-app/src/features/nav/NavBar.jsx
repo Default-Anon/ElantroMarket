@@ -94,7 +94,6 @@ export default function NavBar() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-  const [profileStatus, setProfileStatus] = useState(false);
 
   const [open, setOpen] = useState(false);
 
@@ -104,10 +103,9 @@ export default function NavBar() {
   const handleProfileClicked = () => {
     const token = window.localStorage.getItem('jwt');
     if (token === null) {
-      setProfileStatus(false);
-    } else {
-      setProfileStatus(true);
+      return false;
     }
+    return true;
   }
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -160,14 +158,13 @@ export default function NavBar() {
         <p>Basket</p>
       </MenuItem>
       <MenuItem on>
-        {profileStatus ?
+        {handleProfileClicked() ?
           <IconButton
             href="/account/profile"
             edge="end"
             aria-label="account of current user"
             aria-haspopup="true"
             color="inherit"
-            onClick={handleProfileClicked}
           >
             <AccountCircle />
           </IconButton> :
@@ -177,7 +174,6 @@ export default function NavBar() {
             aria-label="account of current user"
             aria-haspopup="true"
             color="inherit"
-            onClick={handleProfileClicked}
           >
             <AccountCircle />
           </IconButton>}
@@ -218,27 +214,27 @@ export default function NavBar() {
               </Badge>
             </IconButton>
             <Tooltip title={<body style={{ fontSize: '15px' }}>Profile</body>} aria-label="Profile" placement="bottom" >
-              {profileStatus ?
-                <IconButton
-                  href="/account/profile"
-                  edge="end"
-                  aria-label="account of current user"
-                  aria-haspopup="true"
-                  color="inherit"
-                  onClick={handleProfileClicked}
-                >
-                  <AccountCircle />
-                </IconButton> :
-                <IconButton
-                  href="/account/login"
-                  edge="end"
-                  aria-label="account of current user"
-                  aria-haspopup="true"
-                  color="inherit"
-                  onClick={handleProfileClicked}
-                >
-                  <AccountCircle />
-                </IconButton>}
+              {handleProfileClicked() ?
+                <NavLink to={{ pathname: '/account/profile' }} style={{ color: 'black' }} >
+                  <IconButton
+                    edge="end"
+                    aria-label="account of current user"
+                    aria-haspopup="true"
+                    color="inherit"
+                  >
+                    <AccountCircle />
+                  </IconButton>
+                </NavLink> :
+                <NavLink to={{ pathname: '/account/login' }} style={{ color: 'black' }}>
+                  <IconButton
+                    edge="end"
+                    aria-label="account of current user"
+                    aria-haspopup="true"
+                    color="inherit"
+                  >
+                    <AccountCircle />
+                  </IconButton>
+                </NavLink>}
             </Tooltip>
           </div>
           <div className={classes.sectionMobile}>

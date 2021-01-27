@@ -25,7 +25,6 @@ function App() {
         <Route exact path='/account/register' component={SignUp} />
         <Route exact path='/account/profile' component={Profile} />
         <Route exact path="/product/edit" component={ProductEdit} />
-        <Route exact path="/product/category" component={ProductCategoryes}/>
         <Route exact path="/product/category/TV" component={TVPage} />
         <Route exact path="/product/category/Tablets" component={TabletPage} />
         <Route exact path="/product/category/Computers" component={ComputersPage} />

@@ -8,8 +8,10 @@ import { Add, Edit, Delete } from '@material-ui/icons'
 import { FormControlLabel } from '@material-ui/core';
 import Guid from 'guid'
 import { Redirect } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
 const useStyles = makeStyles((theme) => ({
     root: {
+        border: '1px solid black',
         marginLeft: '37px',
         marginTop: '64px',
         [theme.breakpoints.only("xs")]: {
@@ -39,12 +41,14 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.only('lg')]: {
             maxWidth: '700px'
         },
+        [theme.breakpoints.only('xs')]: {
+            maxWidth: 370
+        },
         border: '1px solid yellow'
     },
     boxName: {
         border: '1px solid black',
-        justifyContent: 'center',
-        display: 'flex'
+        display: 'flex',
     },
     paper: {
     },
@@ -53,13 +57,15 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'row',
     },
     cardMediaStyles: {
-        objectFit: 'cover'
+
     },
     InfoUser: {
-        display: 'flex',
+        justifyContent: 'center',
+        textAlign: 'center',
         minHeight: '200px',
         backgroundColor: '#521b44',
         color: 'pink',
+        minWidth: '200px'
     },
     adminForms: {
         border: '1px solid green',
@@ -68,9 +74,8 @@ const useStyles = makeStyles((theme) => ({
     adminFormsCreate: {
         border: '2px solid black',
         [theme.breakpoints.only("lg")]: {
-            width: '550px'
+            maxWidth: '550px'
         },
-        maxWidth: '700px',
     },
     textFieldStyles: {
         color: 'black',
@@ -156,6 +161,7 @@ const Profile = () => {
         setItems(products);
     }
     useEffect(() => {
+        console.log(user);
         if (Object.keys(user).length === 0) {
             agent.SignInManager.currentUser()
                 .then((response) => { setUserHandler(response) });
@@ -173,7 +179,7 @@ const Profile = () => {
                 justifyContent="space-between"
                 flexDirection="row" display="flex"
                 flexWrap="wrap">
-                <Box>
+                <Box display="flex">
                     <Card className={classes.boxImage}>
                         <Link href="http://localhost:3000">
                             <CardActionArea>
@@ -187,7 +193,7 @@ const Profile = () => {
                         </Link>
                     </Card>
                 </Box>
-                <Box className={classes.boxName} justifyContent="space-between" display="flex" flexDirection='column'>
+                <Box className={classes.boxName} display="flex">
                     <Card className={classes.InfoUser} color="inherit">
                         <CardActionArea>
                             <CardContent>
@@ -203,7 +209,7 @@ const Profile = () => {
                 user.role === 'admin' ?
                     <>
                         <Box
-                            justifyContent="space-between"
+                            justifyContent="center"
                             flexDirection="row" display="flex"
                             flexWrap="wrap" className={classes.adminForms}>
                             <Box>
@@ -338,10 +344,12 @@ const Profile = () => {
                     :
                     <Button>Client</Button>
             }
-            <Button variant="contained" color="primary" onClick={SignOutButtonClicked}>
-                Sign Out
+            <Box display="flex" flexDirection="row">
+                <Button variant="contained" color="primary" onClick={SignOutButtonClicked}>
+                    Sign Out
             </Button>
-            { signOut && <p>Вы успешно вышли из аккаунта</p>}
+                {signOut && <p>Вы успешно вышли из аккаунта</p>}
+            </Box>
         </Container >
     );
 }

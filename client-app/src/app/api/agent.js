@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-axios.defaults.baseURL = "https://localhost:5001/api";
-
+//axios.defaults.baseURL = "http://dendfox-001-site1.dtempurl.com/api";
+axios.defaults.baseURL = 'https://localhost:5001/api'
 axios.interceptors.request.use(config => {
     const token = window.localStorage.getItem('jwt');
     if (token) config.headers.Authorization = `Bearer ${token}`;

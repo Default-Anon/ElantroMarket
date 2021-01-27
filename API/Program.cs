@@ -26,7 +26,7 @@ namespace API
                 }
                 catch(Exception ex)
                 {
-                    throw new Exception(ex.Message);
+                    throw new Exception("Database saved changes error");
                 }
             }
             host.Run();
@@ -37,6 +37,7 @@ namespace API
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                   
                 });
     }
 }

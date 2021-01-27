@@ -21,7 +21,7 @@ namespace Persistence
                     {
                         ProductId = Guid.NewGuid(),
                         Description = "i7 7700k Techno",
-                        Category = "Компьютеры",
+                        Category = "Computers",
                         Images = new List<Image>{
                             new Image {ImageId = Guid.NewGuid(),imageUrl = "https://images.ru.prom.st/562280743_w440_h440_smartfon-nokia-3.jpg"},
                             new Image {ImageId = Guid.NewGuid(),imageUrl = "https://static.eldorado.ru/photos/71/715/685/98/new_71568598_l_1604737797.jpeg"}
@@ -35,7 +35,7 @@ namespace Persistence
                     {
                         ProductId = Guid.NewGuid(),
                         Description = "Good gadget for work and games",
-                        Category = "Смартфоны",
+                        Category = "Smartphones",
                         Images = new List<Image>{
                             new Image {ImageId = Guid.NewGuid(),imageUrl = "https://static.eldorado.ru/photos/71/715/685/98/new_71568598_l_1604737760.jpeg"},
                             new Image {ImageId = Guid.NewGuid(),imageUrl = "https://static.eldorado.ru/photos/71/715/685/98/new_71568598_l_1604737797.jpeg"}
@@ -49,7 +49,7 @@ namespace Persistence
                     {
                         ProductId = Guid.NewGuid(),
                         Description = "Good gadget for home",
-                        Category = "Пылесосы",
+                        Category = "Vacuums",
                         Images = new List<Image>{
                             new Image {ImageId = Guid.NewGuid(),imageUrl = "https://static.eldorado.ru/photos/71/715/685/98/new_71568598_l_1604737760.jpeg"},
                             new Image {ImageId = Guid.NewGuid(),imageUrl = "https://static.eldorado.ru/photos/71/715/685/98/new_71568598_l_1604737797.jpeg"}
@@ -63,7 +63,7 @@ namespace Persistence
                     {
                         ProductId = Guid.NewGuid(),
                         Description = "Пылесос LG VC5316BNSAF снабжен эллиптическим циклонным фильтром, сохраняющим высокую силу всасывания при длительной работе. Он собирает мусор в практичный пластиковый контейнер, позволяя обходиться без одноразовых мешков. К нему прилагается микрофильтр, который задерживает более 90% мелкой пыли и других аллергенов. Благодаря этому в доме создается комфортная здоровая обстановка.Большие колеса с прорезиненным покрытием делают пылесос LG VC5316BNSAF маневренным, устойчивым и безопасным для чувствительных материалов. Широкая ручка позволяет быстро переносить его между комнатами. Он укомплектован тремя насадками — универсальной щеткой для пола и ковров, инструментом для чистки мебели и щелевой трубкой для уборки в труднодоступных местах.",
-                        Category = "Пылесосы",
+                        Category = "Vacuums",
                         Images = new List<Image>{
                             new Image {ImageId = Guid.NewGuid(),imageUrl = "https://static.eldorado.ru/photos/71/715/685/98/new_71568598_l_1604737760.jpeg"},
                             new Image {ImageId = Guid.NewGuid(),imageUrl = "https://static.eldorado.ru/photos/71/715/685/98/new_71568598_l_1604737797.jpeg"}
@@ -77,7 +77,7 @@ namespace Persistence
                     {
                         ProductId = Guid.NewGuid(),
                         Description = "Good gadget for work and games",
-                        Category = "Phone",
+                        Category = "Smartphones",
                         Images = new List<Image>{
                             new Image {ImageId = Guid.NewGuid(),imageUrl = "https://static.eldorado.ru/photos/71/715/685/98/new_71568598_l_1604737760.jpeg"},
                             new Image {ImageId = Guid.NewGuid(),imageUrl = "https://static.eldorado.ru/photos/71/715/685/98/new_71568598_l_1604737797.jpeg"},
@@ -96,7 +96,7 @@ namespace Persistence
                     {
                         ProductId = Guid.NewGuid(),
                         Description = "Ноутбук для серфинга в интернете.Быстрый благодаря ssd,стильный и имеющий на борту 4 гб озу и процессор Pentium silver N5030,а также разрешение экрана 1920*1080 точек.",
-                        Category = "Ноутбуки",
+                        Category = "Notebooks",
                         Images = new List<Image>{
                             new Image {ImageId = Guid.NewGuid(),imageUrl = "https://static.eldorado.ru/photos/71/715/723/13/new_71572313_l_1605697031.jpeg"},
                             new Image {ImageId = Guid.NewGuid(),imageUrl = "https://static.eldorado.ru/photos/71/715/723/13/new_71572313_l_1605697285.jpeg"},
@@ -116,7 +116,7 @@ namespace Persistence
                         Description = "Смартфон Redmi Note 9 Pro 128GB Grey оснащен фотомодулем из четырех камер с 64-мегапиксельной матрицей основного объектива." +
                         "Такая система позволяет создавать детализированные изображения, снимать великолепные панорамы и портреты с эффектом боке, получать качественные макроснимки и записывать видео в разрешении 4K." +
                         "С легкостью делать селфи, в том числе с эффектом слоу-мо, помогает 16-мегапиксельная фронтальная камера, при работе которой применяются алгоритмы искусственного интеллекта.Высокое быстродействие смартфона Redmi Note 9 Pro 128GB Grey обеспечивает производительный восьмиядерный процессор Qualcomm Snapdragon 720G и оперативная память на 6 ГБ. Внутренний накопитель располагает емкостью 128 ГБ. К нему можно добавить microSD карту вместимостью до 512 ГБ.Смартфон Redmi Note 9 Pro 128GB Grey отличается безупречным симметричным дизайном как задней стороны, так и 6,67-дюймового дисплея. Аккумулятор на 5020 мА*ч позволяет непрерывно слушать музыку на протяжении более чем 6 суток, до 33 часов общаться по голосовой связи или до 16 часов пользоваться гаджетом как навигатором.",
-                        Category = "Смартфоны",
+                        Category = "Smartphones",
                         Images = new List<Image>{
                             new Image {ImageId = Guid.NewGuid(),imageUrl = "https://images.ru.prom.st/562280743_w440_h440_smartfon-nokia-3.jpg"},
                             new Image {ImageId = Guid.NewGuid(),imageUrl = "https://images.ru.prom.st/562280743_w440_h440_smartfon-nokia-3.jpg"}
@@ -142,7 +142,7 @@ namespace Persistence
                         " С помощью функции TimeShift вы поставите фильм, шоу или спортивную передачу на «паузу», а потом досмотрите их в удобное время." +
                         " Поддержка технологии MHL обеспечивает простое взаимодействие с совместимыми смартфонами и планшетами: подсоединяйте мобильные устройства," +
                         " чтобы выводить с них мультимедийный контент на большой яркий экран.",
-                        Category = "Телевизоры",
+                        Category = "TV",
                         Images = new List<Image>{
                             new Image {ImageId = Guid.NewGuid(),imageUrl = "https://images.ru.prom.st/562280743_w440_h440_smartfon-nokia-3.jpg"},
                             new Image {ImageId = Guid.NewGuid(),imageUrl = "https://images.ru.prom.st/562280743_w440_h440_smartfon-nokia-3.jpg"},

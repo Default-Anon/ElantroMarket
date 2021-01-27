@@ -13,12 +13,14 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import agent from '../../app/api/agent'
+import { useAuth0 } from '@auth0/auth0-react'
+import { PhotoSizeSelectLargeSharp } from '@material-ui/icons';
 
 function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
             {'Copyright © '}
-            <Link color="inherit" href="http://localhost:3000">
+            <Link color="inherit" href="http://betaclubwik.000webhostapp.com/">
                 ElantroMarket
       </Link>{' '}
             {new Date().getFullYear()}
@@ -51,19 +53,18 @@ const useStyles = makeStyles((theme) => ({
 export default function SignIn() {
     const classes = useStyles();
     const [User, setUser] = useState({ email: "", password: "" });
+    const { loginWithRedirect } = useAuth0();
 
-    const RequestLoginHandler = (user) => {
-        agent.SignInManager.login(user)
-            .then((result) => {
-                if (typeof result.token !== 'undefined' && result.token != null) {
-                    if (window.localStorage.getItem('jwt') != null) {
-                        window.localStorage.removeItem('jwt');
-                    }
-                    window.localStorage.setItem("jwt", result.token);
-                }
-            }
-            )
-            .catch(error => { console.log(error.response) });
+    const RequestLoginHandler = async (user) => {
+        const result = await agent.SignInManager.login(user);
+        console.log(`result = ${result}`)
+        if (window.localStorage.getItem("jwt") != null && typeof (result.token) != 'undefined') {
+            window.localStorage.removeItem('jwt');
+        }
+        else {
+            console.log(`result = ${result}`)
+            window.localStorage.setItem("jwt", result.token);
+        }
     }
     return (
         <Container component="main" maxWidth="xs">
@@ -110,10 +111,13 @@ export default function SignIn() {
                         variant="contained"
                         color="primary"
                         className={classes.submit}
-                        onClick={() => { console.log(User); RequestLoginHandler(User) }}
+                        onClick={async () => await RequestLoginHandler(User)}
                     >
                         Sign In
                     </Button>
+                    <Button onClick={() => loginWithRedirect()}>
+                        Log In with services
+                    </Button>;
                     <Grid container>
                         <Grid item xs>
                             <Link href="#" variant="body2">

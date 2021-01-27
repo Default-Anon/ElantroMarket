@@ -1,31 +1,22 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.OpenApi.Models;
 using Persistence;
-using Microsoft.EntityFrameworkCore;
 using MediatR;
 using Application.Products;
-using System.IdentityModel.Tokens.Jwt;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Application.Interfaces;
 using Infrastructure.Security;
-using AutoMapper;
 using Domain;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.EntityFrameworkCore;
 
 namespace API
 {
@@ -48,7 +39,9 @@ namespace API
             services.AddCors(opt => {
                 opt.AddPolicy("CorsPolicy", policy =>
                  {
-                     policy.AllowAnyMethod().AllowAnyHeader().WithOrigins("http://localhost:3000");
+                     /*policy.AllowAnyMethod().AllowAnyHeader().WithOrigins("http://betaclubwik.000webhostapp.com");
+                     policy.AllowAnyMethod().AllowAnyHeader().WithOrigins("http://tuntematonama324build.surge.sh");*/
+                     policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().AllowCredentials().WithOrigins("http://localhost:3000");
                  });
             });
             services.AddMediatR(typeof(List.Handler).Assembly);
@@ -57,10 +50,6 @@ namespace API
                 {
                     opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
                 });
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
-            });
             services.AddMvc(opt => {
                 var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
                 opt.Filters.Add(new AuthorizeFilter(policy));
@@ -71,7 +60,7 @@ namespace API
             var identityBuilder = new IdentityBuilder(builder.UserType, builder.Services);
             identityBuilder.AddEntityFrameworkStores<DataContext>();
             identityBuilder.AddSignInManager<SignInManager<AppUser>>();
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["key"]));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("bloodyelantrosword"/*Configuration["key"]*/));
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(opt =>
                 {
@@ -82,6 +71,13 @@ namespace API
                         ValidateAudience = false,
                         ValidateIssuer = false
                     };
+                })
+                .AddGoogle(opt => 
+                {
+                    IConfigurationSection googleAuthNSection =
+                        Configuration.GetSection("Auth:Google");
+                    opt.ClientId = googleAuthNSection["ClientId"];
+                    opt.ClientSecret = googleAuthNSection["ClientSecretCode"];
                 });
             services.AddScoped<IJwtGenerator, JwtGenerator>();
             services.AddScoped<IUserAccessor, UserAccessor>();
@@ -101,8 +97,6 @@ namespace API
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "API v1"));
             }
             app.UseAuthentication();
             app.UseHttpsRedirection();
