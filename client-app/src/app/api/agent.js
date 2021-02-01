@@ -33,8 +33,12 @@ const Filters = {
     list: (category) => requests.get(`/filter/${category}`),
     search: (category, searchText) => requests.get(`/filter/${category}/${searchText}`)
 };
+const Comments = {
+    create: (comment) => requests.post(`/comment/create`, comment)
+};
 export default {
     Products,
     SignInManager,
-    Filters
+    Filters,
+    Comments
 }

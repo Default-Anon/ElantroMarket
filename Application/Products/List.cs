@@ -25,6 +25,7 @@ namespace Application.Products
             {
                 var products = await _context.Products
                     .Include(x => x.Images)
+                    .Include(x => x.Comments)
                     .ToListAsync();
                 return products;
             }

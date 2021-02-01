@@ -50,21 +50,12 @@ const useStyles = makeStyles((theme) => ({
     Description: {
         display: 'flex',
         justifyContent: 'center',
-        [theme.breakpoints.only("xs")]: {
-            fontSize: '12px'
-        },
-        [theme.breakpoints.up("sm")]: {
-            fontSize: '18px'
-        },
-        [theme.breakpoints.only("lg")]: {
-            maxWidth: '34vw',
-        },
         color: 'black',
         border: '2px solid #042354',
         borderRadius: '10px',
         padding: '10px',
-        textAlign: 'center'
-    }
+        textAlign: 'center',
+    },
 }));
 let hubConnection = null;
 
@@ -108,7 +99,7 @@ const ProductPage = (props) => {
                             </Button>
                     </Box>
                 </Box>
-                <Box display="flex" flexDirection="row" justifyContent="space-between" flexWrap="wrap">
+                <Box display="flex" flexDirection="row" >
                     <Box display="flex" flexDirection="column" alignContent="center" marginLeft="10px">
                         <Typography variant="h2" color="primary" className={classes.title}>
                             О Товаре
@@ -117,8 +108,10 @@ const ProductPage = (props) => {
                             {product.description}
                         </Typography>
                     </Box>
-                    <Reviews />
                 </Box>
+                {typeof (product.comments) == 'undefined' ? <></> :
+                    <Reviews comments={product.comments} productId={product.productId} />
+                }
             </Container>
         </div >
     );

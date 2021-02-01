@@ -26,7 +26,10 @@ namespace Application.Products
             }
             public async Task<Product> Handle(Query query,CancellationToken cancellationToken)
             {
-                var product = await _context.Products.Where(x => x.ProductId == query.Id).Include(collection => collection.Images).SingleAsync();
+                var product = await _context.Products.Where(x => x.ProductId == query.Id)
+                    .Include(collection => collection.Images)
+                    .Include(collection => collection.Comments)
+                    .SingleAsync();
                 if(product == null)
                 {
                     throw new Exception("Id not found");

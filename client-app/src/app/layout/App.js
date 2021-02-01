@@ -14,6 +14,7 @@ import ComputersPage from './../pages/category/ComputersPage';
 import SmartphonesPage from './../pages/category/SmartphonesPage';
 import NotebooksPage from './../pages/category/NotebooksPage';
 import ProductPage from './../pages/product/ProductPage';
+import Footer from './../../features/nav/Footer';
 function App() {
   return (
     <>
@@ -32,6 +33,7 @@ function App() {
         <Route exact path="/product/category/Notebooks" component={NotebooksPage} />
         <Route exact path="/product/id/:id" component={ProductPage} />
         </Switch>
+        <Footer/>
       </BrowserRouter>
     </>
   );

@@ -101,7 +101,7 @@ export default function Sidebar(props) {
         >
             <div className={classes.toolbar}>
                 <IconButton
-                    onClick={() => { setOpen(!open); }}
+                    onClick={async () => { await setOpen(!open); }}
                     edge="start"
                     className={classes.menuButton}
                     color="inherit"
@@ -119,24 +119,28 @@ export default function Sidebar(props) {
                         <ListItemText primary={'Телевизоры'} />
                     </ListItem>
                 </NavLink>
+                <Divider />
                 <NavLink to={{ pathname: '/product/category/Notebooks' }} style={{ color: 'black', textDecoration: "none" }}>
                     <ListItem button key={'Notebooks'}>
                         <ListItemIcon><Laptop /> </ListItemIcon>
                         <ListItemText primary={'Ноутбуки'} />
                     </ListItem>
                 </NavLink>
+                <Divider />
                 <NavLink to={{ pathname: '/product/category/Computers' }} style={{ color: 'black', textDecoration: "none" }}>
                     <ListItem button key={'Computers'}>
                         <ListItemIcon><VideoLabel /> </ListItemIcon>
                         <ListItemText primary={'Компьютеры'} />
                     </ListItem>
                 </NavLink>
+                <Divider />
                 <NavLink to={{ pathname: '/product/category/Smartphones' }} style={{ color: 'black', textDecoration: "none" }}>
                     <ListItem button key={'Smartphones'}>
                         <ListItemIcon><Smartphone /></ListItemIcon>
                         <ListItemText primary={'Смартфоны'} />
                     </ListItem>
                 </NavLink>
+                <Divider />
                 <NavLink to={{ pathname: '/product/category/Tablets' }} style={{ color: 'black', textDecoration: "none" }}>
                     <ListItem button key={'Tablets'}>
                         <ListItemIcon><Tablet /> </ListItemIcon>

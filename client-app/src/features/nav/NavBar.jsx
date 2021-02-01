@@ -17,7 +17,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import Drawer from '@material-ui/core/Drawer'
 import Sidebar from './../sidebar/Sidebar';
-import { Container, Tooltip } from '@material-ui/core';
+import { Container, Tooltip, Avatar } from '@material-ui/core';
 import { Link } from '@material-ui/core/';
 import { ShoppingBasket, ShoppingCart } from '@material-ui/icons';
 import { NavLink } from 'react-router-dom';
@@ -234,6 +234,7 @@ export default function NavBar() {
                   >
                     <AccountCircle />
                   </IconButton>
+
                 </NavLink>}
             </Tooltip>
           </div>
